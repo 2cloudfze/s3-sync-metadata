@@ -45,14 +45,8 @@ sh -c "aws s3 sync ${SOURCE_DIR:-.} s3://${AWS_S3_BUCKET}/${DEST_DIR} \
               ${ENDPOINT_APPEND} $*" &&
 	      echo "First sync Completed" &&
               echo "Second sync starting"
-sh -c "aws s3 sync ${SOURCE_DIR:-.} s3://${AWS_S3_BUCKET}/${DEST_DIR} \
-              --profile s3-sync-action \
-              --no-progress \
-	      --content-type 'text/html' \
-	      --exclude '*.*' \
-              ${ENDPOINT_APPEND} $*"
 	     
-/bin/bash /metadata.sh;
+/bin/bash metadata.sh;
 # Clear out credentials after we're done.
 # We need to re-run `aws configure` with bogus input instead of
 # deleting ~/.aws in case there are other credentials living there.
