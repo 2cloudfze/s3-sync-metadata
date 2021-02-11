@@ -42,11 +42,7 @@ EOF
 sh -c "aws s3 sync ${SOURCE_DIR:-.} s3://${AWS_S3_BUCKET}/${DEST_DIR} \
               --profile s3-sync-action \
               --no-progress \
-              ${ENDPOINT_APPEND} $*" &&
-	      echo "First sync Completed" &&
-              echo "Second sync starting" then
-	     
-sh metadata.sh;
+              ${ENDPOINT_APPEND} $*"
 # Clear out credentials after we're done.
 # We need to re-run `aws configure` with bogus input instead of
 # deleting ~/.aws in case there are other credentials living there.
