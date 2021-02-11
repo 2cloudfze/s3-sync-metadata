@@ -42,9 +42,9 @@ EOF
 sh -c "aws s3 sync ${SOURCE_DIR:-.} s3://${AWS_S3_BUCKET}/${DEST_DIR} \
               --profile s3-sync-action \
               --no-progress \
-              ${ENDPOINT_APPEND} $*" 
-	      && echo "First sync Completed"
-              && echo "Second sync starting"
+              ${ENDPOINT_APPEND} $*" &&
+	      echo "First sync Completed" &&
+              echo "Second sync starting"
 sh -c "aws s3 sync ${SOURCE_DIR:-.} s3://${AWS_S3_BUCKET}/${DEST_DIR} \
               --profile s3-sync-action \
               --no-progress \
