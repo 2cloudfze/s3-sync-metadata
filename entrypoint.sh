@@ -42,10 +42,12 @@ EOF
 
 
 sh -c "aws s3 sync ${SOURCE_DIR:-.} s3://${AWS_S3_BUCKET}/${DEST_DIR} \
-        --profile s3-sync-action \
-        --no-progress \
+         --profile s3-sync-action \
+         --no-progress \
 	 --content-type 'text/html' \
 	 --exclude '*.*' \
+         --exclude '.git/*' \
+         --exclude '.github/*'
         ${ENDPOINT_APPEND} $*" &&
 echo "test"
 
