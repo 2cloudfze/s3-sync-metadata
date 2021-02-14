@@ -41,7 +41,6 @@ EOF
 # All other flags are optional via the `args:` directive.
 sh -c "aws s3 sync ${SOURCE_DIR:-.} s3://${AWS_S3_BUCKET}/${DEST_DIR} \
         --profile s3-sync-metadata \
-        --no-progress \
 	 --content-type 'text/html' \
 	 --exclude '*.*' \
         ${ENDPOINT_APPEND} $*" &&
