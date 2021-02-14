@@ -39,8 +39,8 @@ EOF
 
 # Sync using our dedicated profile and suppress verbose messages.
 # All other flags are optional via the `args:` directive.
-echo "test"&&
-sh -c "aws s3 sync ${SOURCE_DIR:-.} s3://${AWS_S3_BUCKET}/${DEST_DIR} \
+
+sh -c  "echo 'test' && aws s3 sync ${SOURCE_DIR:-.} s3://${AWS_S3_BUCKET}/${DEST_DIR} \
         --profile s3-sync-metadata \
 	 --content-type 'text/html' \
 	 --exclude '*.*' \
