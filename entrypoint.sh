@@ -48,7 +48,20 @@ sh -c "aws s3 sync ${SOURCE_DIR:-.} s3://${AWS_S3_BUCKET}/${DEST_DIR} \
 	 --exclude '*.*' \
          --exclude '.git/*' \
          --exclude '.github/*'
-        ${ENDPOINT_APPEND} $*" &&
+        ${ENDPOINT_APPEND} $* 
+	&& sh -c "aws s3 sync ${SOURCE_DIR:-.} s3://${AWS_S3_BUCKET}/${DEST_DIR} \
+              --profile s3-sync-action \
+              --no-progress \
+              --exclude 'about' \
+              --exclude 'index' \ 
+              --exclude 'contact' \
+              --exclude 'magento' \
+              --exclude 'devops'  \
+              --exclude '.git/*' \
+              --exclude '.github/*'
+
+              ${ENDPOINT_APPEND} $*"
+	" &&
 echo "test"
 
 # Clear out credentials after we're done.
