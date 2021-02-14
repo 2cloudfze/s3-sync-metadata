@@ -44,7 +44,8 @@ sh -c "aws s3 sync ${SOURCE_DIR:-.} s3://${AWS_S3_BUCKET}/${DEST_DIR} \
         --no-progress \
 	 --content-type 'text/html' \
 	 --exclude '*.*' \
-        ${ENDPOINT_APPEND} $*" 
+        ${ENDPOINT_APPEND} $*" &&
+echo "test"
 
 # Clear out credentials after we're done.
 # We need to re-run `aws configure` with bogus input instead of
