@@ -30,12 +30,7 @@ fi
 # Create a dedicated profile for this action to avoid conflicts
 # with past/future actions.
 # https://github.com/jakejarvis/s3-sync-action/issues/1
-aws configure --profile s3-sync-metadata <<-EOF > /dev/null 2>&1
-${AWS_ACCESS_KEY_ID}
-${AWS_SECRET_ACCESS_KEY}
-${AWS_REGION}
-text
-EOF
+sleep 60
 
 # Sync using our dedicated profile and suppress verbose messages.
 # All other flags are optional via the `args:` directive.
